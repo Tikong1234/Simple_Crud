@@ -22,28 +22,18 @@
         ?>
       <button class="btn btn-primary mb-5"><a href="user.php" class="text-light" > add user</a></button>
 
-        <table class="table">
+      <table class="table table-striped">
   <thead>
     <tr>
+      <th scope="col">#</th>
       <th scope="col">Last Name</th>
       <th scope="col">First Name</th>
       <th scope="col">Middle Name</th>
       <th scope="col">Home Address</th>
       <th scope="col">Present Address</th>
-      <!-- <th scope="col">Contact</th> -->
-      <!-- <th scope="col">Sex</th> -->
-      <!-- <th scope="col">Date of Birth</th> -->
       <th scope="col">Email</th>
-      <!-- <th scope="col">Place of Birth</th> -->
-      <!-- <th scope="col">Civil Status</th> -->
-      <!-- <th scope="col">Elementary</th> -->
-      <!-- <th scope="col">Year Graduated</th> -->
-      <!-- <th scope="col">High School</th> -->
-      <!-- <th scope="col">Year Graduated</th> -->
-      <!-- <th scope="col">Senior highgraduated</th> -->
-      <!-- <th scope="col">Year Graduated</th> -->
       <th scope="col">Track and Strand</th>
-      <th scope="col">Course to Be enrolled</th>
+      <th scope="col">Course to Be Enrolled</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -53,40 +43,35 @@
     
     $sql = "SELECT * FROM `registration`";
     $result = mysqli_query($conn, $sql);
+    $count = 1; 
+    
     while($row = mysqli_fetch_assoc($result)){
         ?>
         <tr>
-      <td><?php echo $row['lname']?></td>
-      <td><?php echo $row['fname']?></td>
-      <td><?php echo $row['mname']?></td>
-      <td><?php echo $row['homeAdd']?></td>
-      <td><?php echo $row['presentAdd']?></td>
-      <!-- <td><?php echo $row['contact']?></td> -->
-      <!-- <td><?php echo $row['sex']?></td> -->
-      <!-- <td><?php echo $row['dateOfbirth']?></td> -->
-      <td><?php echo $row['email']?></td>
-      <!-- <td><?php echo $row['placeOfbirth']?></td> -->
-      <!-- <td><?php echo $row['civilstatus']?></td> -->
-      <!-- <td><?php echo $row['elementary']?></td> -->
-      <!-- <td><?php echo $row['elemgraduated']?></td> -->
-      <!-- <td><?php echo $row['highschool']?></td> -->
-      <!-- <td><?php echo $row['highgraduated']?></td> -->
-      <!-- <td><?php echo $row['shs']?></td> -->
-      <!-- <td><?php echo $row['shsgraduated']?></td> -->
-      <td><?php echo $row['track_strand']?></td>
-      <td><?php echo $row['course']?></td>
-      <td>
-        <button class="btn btn-primary"><a href="update.php? id=<?php echo $row['id'];?>" class="text-light">Update</a></button>
-        <button class="btn btn-danger"><a href="delete.php ? deleteid=<?php echo $row['id'];?>" class="text-light">Delete</a></button>
-      </td>
-    </tr>
+          <td><?php echo $count++; ?></td> 
+          <td><?php echo $row['lname']; ?></td>
+          <td><?php echo $row['fname']; ?></td>
+          <td><?php echo $row['mname']; ?></td>
+          <td><?php echo $row['homeAdd']; ?></td>
+          <td><?php echo $row['presentAdd']; ?></td>
+          <td><?php echo $row['email']; ?></td>
+          <td><?php echo $row['track_strand']; ?></td>
+          <td><?php echo $row['course']; ?></td>
+          <td>
+            <button class="btn btn-primary">
+              <a href="update.php?id=<?php echo $row['id']; ?>" class="text-light">Update</a>
+            </button>
+            <button class="btn btn-danger">
+              <a href="delete.php?deleteid=<?php echo $row['id']; ?>" class="text-light">Delete</a>
+            </button>
+          </td>
+        </tr>
         <?php
     }
     ?>
-    
-    
   </tbody>
 </table>
+
     </div>
 
     
